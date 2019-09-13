@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Abc.MvcWebUI.Models.UserOrderModel>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Sipariş İşlemleri</h2>
+            <table class="table table-hover table-bordered">
+                <thead>
+                    <tr>
+                        <th>Order Number</th>
+                        <th>Order date</th>
+                        <th>Total</th>
+                        <th>Sipariş Durumu</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var order in Model)
+                    {
+                        <tr>
+                            <td>@order.OrderNumber</td>
+                            <td>@order.Total</td>
+                            <td>@order.DateTime.ToShortDateString()</td>
+                            <td>@order.OrderState</td>
+                            <td> @Html.ActionLink("Details","Details",new{Id=order.Id},new{@class="btn btn-primary"})</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
